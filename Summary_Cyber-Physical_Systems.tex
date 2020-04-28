@@ -1,0 +1,280 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\renewcommand\familydefault{\sfdefault}
+
+\title{Summary - \lecture}
+\author{}
+\date{}
+
+
+%costum layout
+\setlength{\parindent}{0cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{
+	\strut\rlap{\colorlayout\rule[-\dp\strutbox]{\headwidth}{\headheight}}
+	\textcolor {white} {Summary: \lecture}}
+\fancyfoot[L]{
+	\strut\rlap{\colorlayout\rule[-\dp\strutbox]{\headwidth}{\headheight}}
+	\textcolor {white} {last changed: \today}}
+\fancyhead[R]{\textcolor{white}{\semseter}}
+\fancyfoot[R]{\textcolor{white} {\thepage}}
+
+
+%math
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{mathtools}
+
+
+%graphics
+\usepackage{graphicx}
+\usepackage{floatflt}
+\usepackage{float}
+
+
+%tabular
+\usepackage{tabularx}
+\usepackage[font=small,labelfont=small]{caption}
+\usepackage{colortbl}
+\usepackage[dvipsnames]{xcolor}
+\renewcommand{\arraystretch}{1.5}
+%\arrayrulecolor{white}
+
+
+%tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes, petri}
+\tikzstyle{ell}=[ellipse,draw, yshift=-2mm]
+\tikzstyle{rec} = [rectangle, draw]
+\tikzstyle{dia} = [diamond, aspect=2, draw, yshift=-5mm]
+\tikzstyle{cir} = [circle, draw, minimum size=3mm]
+\tikzstyle{arrHV} = [to path={-| (\tikztotarget)}]
+\tikzstyle{arrVH} = [to path={|- (\tikztotarget)}]
+\tikzstyle{whileright} = [xshift=20mm, yshift=-3mm]
+\tikzstyle{whileleft} = [xshift=-20mm, yshift=-3mm]
+\tikzstyle{txtright} = [above, xshift=15mm]
+\tikzstyle{txtleft} = [above, xshift=-15mm]
+\tikzstyle{empty} = [coordinate]
+\usetikzlibrary{positioning}
+
+
+%listings
+\usepackage{listings}
+\lstdefinestyle{costum} {
+	language=Bash,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{cyan!50!blue},
+	commentstyle=\itshape\color{black!50},
+	%identifierstyle=\color{blue},
+	stringstyle=\color{green!50!black},
+	morekeywords={returns, loop, each},
+	escapeinside={\%*}{*)}
+}
+\lstset{style=costum}
+
+
+%%custom title color
+%\usepackage{titlesec}
+%\setcounter{secnumdepth}{4}
+%
+%\titleformat{\section}
+%{\color{cyan!80!blue}\normalfont\Large\bfseries}
+%{\color{black}\thesection}{1em}{}
+%
+%\titleformat{\subsubsection}
+%{\color{blue!30!black!70}\normalfont\bfseries}
+%{\color{black}\thesection}{1em}{}
+%
+%\titleformat{\paragraph}
+%{\color{green!30!black!70}\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+%\titlespacing*{\paragraph}
+%{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+%tab
+\newcommand{\tab}[1][1]{\hspace*{#1cm}}
+
+
+%hyperref
+\usepackage{hyperref}
+
+
+%vector
+\newcommand{\vect}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+
+%TODO
+%config
+\newcommand{\lecture}{Cyber-Physical Systems} %title of the lecture
+\newcommand{\lecturer}{Althoff M.} %lecturer of the lecture
+\newcommand{\semseter}{summer semester 2020} %semester of this lecture, e.g., summer semester 2019
+\newcommand{\colorlayout}{\color{red!50!black}} %color of the title bar, see colors
+
+%colors, e.g,
+%cyan!50!blue
+%green!50!black
+%orange!50!black
+
+%user
+
+
+%TODO
+% a user defined todo list
+
+
+%%Check
+%Introduction (y)
+%
+
+
+
+\begin{document}
+\tableofcontents
+\pagebreak
+
+\section{Introduction}
+\subsection{Typical Sensors and Actuators}
+\begin{itemize}
+	\item Sensors
+	\begin{itemize}
+		\item acceleration sensor
+		\item light sensor
+		\item force sensor
+		\item temperature sensor
+		\item video camera
+		\item pressure sensor
+		\item angle sensor
+		\item LIDAR
+	\end{itemize}
+	\item Actuators
+	\begin{itemize}
+		\item electric motor
+		\item hydraulic/pneumatic cylinder
+		\item magnetic valve
+		\item relay
+		\item heating
+		\item piezo actuator
+		\item pump
+		\item laser
+	\end{itemize}
+\end{itemize}
+
+\subsection{Model-Based Design}
+\subsubsection{Process}
+\begin{enumerate}
+	\item Modeling
+	\item Design
+	\item Analysis
+	\item Deployment
+\end{enumerate}
+
+\subsubsection{Advantages}
+\begin{itemize}
+	\item Improvement of the product quality
+	\item Handling complexity
+	\item Shorter development times
+\end{itemize}
+
+\subsubsection{Concept of Systems}
+\begin{itemize}
+	\item \textbf{System:} Is a set of interacting or independent components that is distinguished from its environment by a system boundary
+	\item \textbf{System boundary:} Describes the exchange of a system with its environment via inputs and outputs
+	\item \textbf{Subsystem:} System in a system
+\end{itemize}
+
+\subsection{Signal Types}
+\subsubsection{Continuous Signals}
+$$
+	f : \mathbb{R}^+_0 → \mathbb{R}
+$$
+
+\subsubsection{Discrete-Time Signal}
+$$
+	f : \mathcal D → \mathbb{R}
+$$ where $\mathcal D$ is a countable set, e.g. $\mathcal D = \{t_1, t_2, \dots \} \text{ or } \mathcal D = \mathbb{N}_0$
+
+\subsubsection{Discrete-Value Signal}
+$$
+	f : \mathbb{R}^+_0 → \mathcal D
+$$ where $\mathcal D$ is a countable set, e.g. $\mathcal D  = \{0, 1\}$
+
+\subsubsection{Discrete-Time and Discrete-Value Signal}
+$$
+	f : \mathcal D → \tilde{\mathcal D}
+$$ where $\mathcal D, \tilde{\mathcal D}$ are countable sets
+
+\subsection{Systems}
+\begin{tabularx}{\columnwidth}{l|X|X|X}
+	& Discrete-State System & Continuous-State System & Hybrid System \\
+	\hline
+	\hline
+	States/Inputs/Outputs & discrete & continuous & discrete and continuous \\
+	Time variable & $t_k$ (discrete) & $t$ (continuous) & $t$ (continuous)\\
+	Input variable &  $u(t_k) \in \tilde{\mathcal D}_1$ & $u(t) \in \mathbb R$ & $u(t) \in \tilde{\mathcal D}_1$ or $\mathbb R$ \\
+	Output variable &  $y(t_k) \in \tilde{\mathcal D}_2$ & $y(t) \in \mathbb R$ & $y(t) \in \tilde{\mathcal D}_2$ or $\mathbb R$ \\
+	State vector & $z(t_k)$ & $x(t)$ & $x(t)$ \\
+	Equations & $z(t_{k+1}) = A z(t_k) + b u(t_k)$ & $\dot x(t) = A x(t) + b u(t)$ & $\dot x(t) = A x(t) + b u(t)$ \\
+	& $y(t_k) = c^T z(t_k)$ & $y(t) = c^T x(t)$ & $y(t) = c^T x(t)$
+	
+\end{tabularx}
+
+\subsubsection{Properties}
+
+
+\textbf{State of a dynamic system}
+\begin{itemize}
+	\item A state vector $x$ consists of the (smallest) number of variables that need to be specified at the initial time $t_0$ so that the future behavior is uniquely defined for a given input signal $u(t)$
+\end{itemize}
+
+\textbf{Static and Dynamic Systems}
+\begin{itemize}
+	\item \textbf{Static System:} No state required
+	\item \textbf{Dynamic System:} State required
+\end{itemize}
+
+\textbf{Time-Invariant and Time-Variant Systems}
+\begin{itemize}
+	\item \textbf{Time-invariant system:} Shift of time does not change the outcome
+	\item \textbf{Time-variant system:} Shift of time alters the outcome
+\end{itemize}
+
+\textbf{Deterministic and Non-Deterministic Systems}
+\begin{itemize}
+	\item \textbf{Deterministic system:} For an initial state $x(0)$ and a given input signal $u(t)$, there exists a unique solution of the state and the output
+	\item \textbf{Non-deterministic system:} The evolution of the state and the output is not uniquely determined by the initial state and the input signal
+\end{itemize}
+
+\textbf{Causal, Acausal, and anticausal Systems}
+\begin{itemize}
+	\item \textbf{Causal sytem:} The output only depends on past and current inputs
+	\item \textbf{Acausal system:} The output also depends on future inputs
+	\item \textbf{Anticausal system:} The output only depends on future inputs
+\end{itemize}
+
+\pagebreak
+\section*{Notes}
+This is a summary of the lecture~\lecture~of the Technical University Munich.
+This lecture was presented by~\lecturer~in the~\semseter.
+This summary was created by Gaida B.
+All provided information is without guarantee.
+
+
+%\section*{References}
+%author. \textit{title}. publisher. location, year, 
+
+\end{document}
+
+%TODO check for todos
+
+
+
+
+
+
+
+
